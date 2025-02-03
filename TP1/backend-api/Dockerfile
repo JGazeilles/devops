@@ -15,6 +15,4 @@ WORKDIR $API_APP_HOME
 
 COPY --from=devops-tp1-backend-api-build $API_APP_HOME/target/*.jar $API_APP_HOME/devops-tp1-backend-api.jar
 
-EXPOSE 8080
-
 ENTRYPOINT ["java", "-jar", "devops-tp1-backend-api.jar"]

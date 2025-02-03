@@ -1,0 +1,46 @@
+services:
+  api:
+    build:
+      context: ./backend-api
+    container_name: devops-tp1-api
+    depends_on:
+      - db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/db
+      - SPRING_DATASOURCE_USERNAME=usr
+      - SPRING_DATASOURCE_PASSWORD=pwd
+    ports:
+      - "8080:8080"
+    networks:
+      - devops-tp1-network
+
+  db:
+    build:
+      context: ./database
+    container_name: devops-tp1-db
+    environment:
+      - POSTGRES_DB=db
+      - POSTGRES_USER=usr
+      - POSTGRES_PASSWORD=pwd
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    networks:
+      - devops-tp1-network
+
+  web:
+    build:
+      context: ./http
+    container_name: devops-tp1-web
+    depends_on:
+      - api
+    ports:
+      - "80:80"
+    networks:
+      - devops-tp1-network
+
+networks:
+  devops-tp1-network:
+    driver: bridge
+
+volumes:
+  db-data:
