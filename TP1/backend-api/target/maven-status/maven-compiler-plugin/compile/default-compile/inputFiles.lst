@@ -1,0 +1,10 @@
+/home/tinesife/4IRC/DevOps/devops/TP1/backend-api/src/main/java/com/devops_tp1/backend_api/BackendApiApplication.java
+/home/tinesife/4IRC/DevOps/devops/TP1/backend-api/src/main/java/com/devops_tp1/backend_api/controller/DepartmentController.java
+/home/tinesife/4IRC/DevOps/devops/TP1/backend-api/src/main/java/com/devops_tp1/backend_api/controller/GreetingController.java
+/home/tinesife/4IRC/DevOps/devops/TP1/backend-api/src/main/java/com/devops_tp1/backend_api/controller/StudentController.java
+/home/tinesife/4IRC/DevOps/devops/TP1/backend-api/src/main/java/com/devops_tp1/backend_api/dao/DepartmentDAO.java
+/home/tinesife/4IRC/DevOps/devops/TP1/backend-api/src/main/java/com/devops_tp1/backend_api/dao/StudentDAO.java
+/home/tinesife/4IRC/DevOps/devops/TP1/backend-api/src/main/java/com/devops_tp1/backend_api/entity/Department.java
+/home/tinesife/4IRC/DevOps/devops/TP1/backend-api/src/main/java/com/devops_tp1/backend_api/entity/Student.java
+/home/tinesife/4IRC/DevOps/devops/TP1/backend-api/src/main/java/com/devops_tp1/backend_api/service/DepartmentService.java
+/home/tinesife/4IRC/DevOps/devops/TP1/backend-api/src/main/java/com/devops_tp1/backend_api/service/StudentService.java
