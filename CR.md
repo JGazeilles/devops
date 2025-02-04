@@ -13,16 +13,16 @@ ENV POSTGRES_DB=db \
 ```
 ```bash
 # Création du réseau pour l'Adminer
-docker network create devops-tp1-network
+docker network create devops-network
 
 # Construire l'image
-docker build -t devops-tp1-db .
+docker build -t devops-db .
 
 # Lancement du conteneur de la db
-docker run -d --name devops-tp1-db  --net=devops-tp1-network -p 5432:5432 devops-tp1-db
+docker run -d --name devops-db  --net=devops-tp1-network -p 5432:5432 devops-db
 
 # Connexion à la db pour vérification
-docker exec -it devops-tp1-db  psql -U usr -d db
+docker exec -it devops-db psql -U usr -d db
 # -> psql se lance normalement
 
 # Lancement d'Adminer
