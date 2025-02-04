@@ -20,4 +20,4 @@ jobs:
           java-version: '21'
 
       - name: Construction et tests avec Maven
-        run: mvn clean verify --file ./simple-api/pom.xml
+        run: mvn clean verify --file ./api/pom.xml
