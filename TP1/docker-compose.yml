@@ -9,8 +9,6 @@ services:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/db
       - SPRING_DATASOURCE_USERNAME=usr
       - SPRING_DATASOURCE_PASSWORD=pwd
-    ports:
-      - "8080:8080"
     networks:
       - devops-tp1-network
 
