@@ -30,7 +30,7 @@ docker run -p 8090:8080 --net=devops-tp1-network -d adminer
 ```
 ###### 1-4 Pourquoi avons-nous besoin d'une construction multistage ? Et expliquez chaque étape de ce Dockerfile.
 ```Dockerfile
-# Phase de compilation
+# Phase de compilation 
 FROM eclipse-temurin:21-jdk-alpine
 
 COPY . /usr/src/app
