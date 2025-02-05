@@ -10,7 +10,14 @@ services:
       - SPRING_DATASOURCE_USERNAME=usr
       - SPRING_DATASOURCE_PASSWORD=pwd
     networks:
-      - app-network
+      - tp-devops-network
+
+  front:
+    build:
+      context: ./front
+    container_name: devops-front
+    networks:
+      - tp-devops-network
 
   db:
     build:
@@ -23,7 +30,7 @@ services:
     volumes:
       - db-data:/var/lib/postgresql/data
     networks:
-      - app-network
+      - tp-devops-network
 
   web:
     build:
@@ -34,10 +41,10 @@ services:
     ports:
       - "80:80"
     networks:
-      - app-network
+      - tp-devops-network
 
 networks:
-  app-network:
+  tp-devops-network:
     driver: bridge
 
 volumes:

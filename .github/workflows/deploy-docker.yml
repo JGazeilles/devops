@@ -29,6 +29,13 @@ jobs:
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/tp-devops-db:latest
           push: ${{ github.ref == 'refs/heads/main' }}
 
+      - name: Build and push front Docker image
+        uses: docker/build-push-action@v3
+        with:
+          context: ./front
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/tp-devops-front:latest
+          push: ${{ github.ref == 'refs/heads/main' }}
+
       - name: Build and push web Docker image
         uses: docker/build-push-action@v3
         with:
