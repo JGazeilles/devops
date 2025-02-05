@@ -1,0 +1,10 @@
+---
+# tasks file for roles/create_network
+- name: Create Docker network
+  docker_network:
+    name: tp-devops-network
+    driver: bridge
+    state: present
+    api_version: auto
+  vars:
+    ansible_python_interpreter: /usr/bin/python3

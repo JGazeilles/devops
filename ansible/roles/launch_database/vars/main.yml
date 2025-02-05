@@ -1,0 +1,5 @@
+---
+# vars file for roles/launch_database
+db_name: db
+db_user: usr
+db_password: pwd
