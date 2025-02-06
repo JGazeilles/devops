@@ -2,9 +2,9 @@
 # tasks file for roles/lauch_front
 - name: Start Front container
   docker_container:
-    name: devops-front
+    name: front
     image: jgazeillescpe/tp-devops-front:latest
-    state: started
-    restart_policy: always
+    pull: yes
     networks:
-      - name: tp-devops-network
+      - name: devops-network-app
+      - name: devops-network-proxy

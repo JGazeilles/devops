@@ -1,36 +1,10 @@
 services:
-  api:
-    build:
-      context: ./api
-    container_name: devops-api
-    depends_on:
-      - db
-    environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/db
-      - SPRING_DATASOURCE_USERNAME=usr
-      - SPRING_DATASOURCE_PASSWORD=pwd
-    networks:
-      - tp-devops-network
-
   front:
     build:
       context: ./front
     container_name: devops-front
     networks:
-      - tp-devops-network
-
-  db:
-    build:
-      context: ./db
-    container_name: devops-db
-    environment:
-      - POSTGRES_DB=db
-      - POSTGRES_USER=usr
-      - POSTGRES_PASSWORD=pwd
-    volumes:
-      - db-data:/var/lib/postgresql/data
-    networks:
-      - tp-devops-network
+      - devops-network-front
 
   web:
     build:
@@ -41,11 +15,42 @@ services:
     ports:
       - "80:80"
     networks:
-      - tp-devops-network
+      - devops-network-front
+      - devops-network-back
+
+  api:
+    build:
+      context: ./api
+    container_name: devops-api
+    depends_on:
+      db:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U {POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 10s
+      retries: 5
+      start_period: 30s
+    env_file:
+      - .env
+    networks:
+      - devops-network-back
+      - devops-network-db
+
+  db:
+    build:
+      context: ./db
+    container_name: devops-db
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    env_file:
+      - .env
+    networks:
+      - devops-network-db
 
 networks:
-  tp-devops-network:
-    driver: bridge
-
+  - devops-network-front
+  - devops-network-back
+  - devops-network-db
+  
 volumes:
-  db-data:
+  db-data:/var/lib/postgresql/data:rw

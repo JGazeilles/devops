@@ -2,13 +2,10 @@
 # tasks file for roles/launch_app
 - name: Start API container
   docker_container:
-    name: devops-api
+    name: api
     image: jgazeillescpe/tp-devops-api:latest
-    state: started
-    restart_policy: always
+    pull: yes
     networks:
-      - name: tp-devops-network
-    env:
-      SPRING_DATASOURCE_URL: "jdbc:postgresql://{{ db_host }}:{{ db_port }}/{{ db_name }}"
-      SPRING_DATASOURCE_USERNAME: "{{ db_user }}"
-      SPRING_DATASOURCE_PASSWORD: "{{ db_password }}"
+      - name: devops-network-app
+      - name: devops-network-proxy
+    env_file: "{{ prod_server_app_path }}.env"

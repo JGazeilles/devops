@@ -2,11 +2,11 @@
 # tasks file for roles/launch_proxy
 - name: Start Web container
   docker_container:
-    name: devops-web
+    name: web
     image: jgazeillescpe/tp-devops-web:latest
-    state: started
-    restart_policy: always
+    pull: yes
     networks:
-      - name: tp-devops-network
+      - name: devops-network-proxy
+    env_file: "{{ prod_server_app_path }}.env"
     ports:
       - "80:80"

@@ -1,8 +1,0 @@
----
-# vars file for roles/launch_app
-app_port: 8080
-db_host: devops-db
-db_port: 5432
-db_name: db
-db_user: usr
-db_password: pwd

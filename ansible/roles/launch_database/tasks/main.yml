@@ -2,15 +2,11 @@
 # tasks file for roles/launch_database
 - name: Start Database container
   docker_container:
-    name: devops-db
+    name: db
     image: jgazeillescpe/tp-devops-db:latest
-    state: started
-    restart_policy: always
+    pull: yes
     networks:
-      - name: tp-devops-network
-    env:
-      POSTGRES_DB: "{{ db_name }}"
-      POSTGRES_USER: "{{ db_user }}"
-      POSTGRES_PASSWORD: "{{ db_password }}"
+      - name: devops-network-app
+    env_file: "{{ prod_server_app_path }}.env"
     volumes:
-      - /data/postgres:/var/lib/postgresql/data
+      - db-data:/var/lib/postgresql/data

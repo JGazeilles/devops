@@ -30,3 +30,8 @@
     name: docker
     state: started
     enabled: yes
+
+- name: Create env
+  copy:
+    src: "/home/tinesife/4IRC/DevOps/devops/.env"
+    dest: "{{ prod_server_app_path }}.env"
